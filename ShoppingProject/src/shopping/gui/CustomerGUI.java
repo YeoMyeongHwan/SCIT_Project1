@@ -3,19 +3,18 @@ import java.awt.BorderLayout;
 
 import java.awt.EventQueue;
 import javax.swing.*;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+
 import java.awt.Font;
-import javax.swing.JTextArea;
-import javax.swing.JList;
 import java.awt.Scrollbar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import java.awt.Color;
+import java.awt.Container;
 
 public class CustomerGUI extends JFrame {
 
@@ -86,9 +85,7 @@ public class CustomerGUI extends JFrame {
 		textArea = new JTextArea();
 		scrollPane_1.setViewportView(textArea);
 		
-		lblNewLabel_2 = new JLabel("     상 품 ID  /  상 품 명  /  상 품 가 격");
-		scrollPane_1.setColumnHeaderView(lblNewLabel_2);
-		
+	
 		lblNewLabel_1 = new JLabel("장바구니");
 		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 23));
 		lblNewLabel_1.setBounds(90, 304, 105, 30);

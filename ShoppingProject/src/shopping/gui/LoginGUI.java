@@ -1,6 +1,7 @@
 package shopping.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
@@ -8,15 +9,23 @@ import java.awt.GridLayout;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class LoginGUI extends JFrame {
-	private JTextField textField;
-	private JPasswordField passwordField;
+public class LoginGUI extends JFrame implements ActionListener {
+	private JTextField tf_ID;
+	private JPasswordField tf_pw;
+	private JButton btn_login = new JButton("로그인");
+	private JButton btn_make = new JButton("회원가입");
+	private JComboBox comboBox = new JComboBox();
 	/**
 	 * Launch the application.
 	 */
@@ -25,7 +34,6 @@ public class LoginGUI extends JFrame {
 			public void run() {
 				try {
 					LoginGUI frame = new LoginGUI();
-					frame.getContentPane().setBackground(Color.PINK);
 					frame.setBounds(100, 100, 300, 300);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -35,37 +43,62 @@ public class LoginGUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public LoginGUI() {
-		getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("\uB85C\uADF8\uC778 \uBAA9\uB85D:");
-		lblNewLabel.setBounds(25, 70, 75, 15);
-		getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("\uC544\uC774\uB514:");
-		lblNewLabel_1.setBounds(25, 118, 75, 15);
-		getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("\uBE44\uBC00\uBC88\uD638:");
-		lblNewLabel_2.setBounds(25, 170, 75, 15);
-		getContentPane().add(lblNewLabel_2);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uAD00\uB9AC\uC790", "\uD68C\uC6D0"}));
-		comboBox.setBounds(112, 67, 120, 21);
-		getContentPane().add(comboBox);
-		
-		textField = new JTextField();
-		textField.setBounds(112, 115, 120, 21);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(112, 167, 120, 21);
-		getContentPane().add(passwordField);
+		init();
 
+	}
+
+	public void init() {
+		getContentPane().setLayout(null);
+
+		JLabel Label_list = new JLabel("\uB85C\uADF8\uC778 \uBAA9\uB85D:");
+		Label_list.setBounds(25, 60, 75, 15);
+		getContentPane().add(Label_list);
+
+		JLabel Label_ID = new JLabel("\uC544\uC774\uB514:");
+		Label_ID.setBounds(25, 99, 75, 15);
+		getContentPane().add(Label_ID);
+
+		JLabel Label_pw = new JLabel("\uBE44\uBC00\uBC88\uD638:");
+		Label_pw.setBounds(25, 140, 75, 15);
+		getContentPane().add(Label_pw);
+		
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uAD00\uB9AC\uC790", "\uD68C\uC6D0" }));
+		comboBox.setBounds(130, 57, 120, 21);
+		getContentPane().add(comboBox);
+
+		tf_ID = new JTextField();
+		tf_ID.setBounds(130, 96, 120, 21);
+		getContentPane().add(tf_ID);
+		tf_ID.setColumns(10);
+
+		tf_pw = new JPasswordField();
+		tf_pw.setBounds(130, 137, 120, 21);
+		getContentPane().add(tf_pw);
+
+		btn_login.setBounds(25, 210, 97, 23);
+		getContentPane().add(btn_login);
+		
+		btn_make.setBounds(153, 210, 97, 23);
+		getContentPane().add(btn_make);
+
+		btn_login.addActionListener(this); // 메인클래스가 ActionListener
+		btn_make.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn_login) { // 객체변수명으로 비교
+			String catalog = comboBox.getSelectedItem().toString();
+			String id = tf_ID.getText();
+			String pw = tf_pw.getText();
+			
+			JOptionPane.showMessageDialog(this, catalog+" 페이지로 이동하겠습니다");
+			System.out.println(catalog+""+id+""+pw);
+			//DB에서 id와 pw를 비교하여 true면 접속 or 실패
+		} else if (e.getSource() == btn_make) {
+			
+		}
 	}
 }
