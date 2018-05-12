@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
-public class NewCustmoerGUI extends JFrame {
+public class NewCustomerGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel labed_title;
@@ -48,7 +48,7 @@ public class NewCustmoerGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public NewCustmoerGUI() {
+	public NewCustomerGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 660);
 		setTitle("회원가입");

@@ -1,24 +1,18 @@
 package shopping.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.ComboBoxEditor;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class LoginGUI extends JFrame implements ActionListener {
 	private JTextField tf_ID;
@@ -26,6 +20,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 	private JButton btn_login = new JButton("로그인");
 	private JButton btn_make = new JButton("회원가입");
 	private JComboBox comboBox = new JComboBox();
+	static LoginGUI frame;
 	/**
 	 * Launch the application.
 	 */
@@ -33,7 +28,8 @@ public class LoginGUI extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginGUI frame = new LoginGUI();
+					
+					frame = new LoginGUI();
 					frame.setBounds(100, 100, 300, 300);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -45,7 +41,6 @@ public class LoginGUI extends JFrame implements ActionListener {
 
 	public LoginGUI() {
 		init();
-
 	}
 
 	public void init() {
@@ -93,12 +88,20 @@ public class LoginGUI extends JFrame implements ActionListener {
 			String catalog = comboBox.getSelectedItem().toString();
 			String id = tf_ID.getText();
 			String pw = tf_pw.getText();
-			
-			JOptionPane.showMessageDialog(this, catalog+" 페이지로 이동하겠습니다");
-			System.out.println(catalog+""+id+""+pw);
+
 			//DB에서 id와 pw를 비교하여 true면 접속 or 실패
+			JOptionPane.showMessageDialog(this, catalog+" 페이지로 이동하겠습니다");
+			if(catalog.equals("관리자")) {
+				ManagerGUI mg = new ManagerGUI();
+				mg.setVisible(true);
+			}else {
+				CustomerGUI ci = new CustomerGUI();
+				ci.setVisible(true);
+			}
+			frame.dispose();
 		} else if (e.getSource() == btn_make) {
-			
+			NewCustomerGUI ng = new NewCustomerGUI();
+			ng.setVisible(true);
 		}
 	}
 }

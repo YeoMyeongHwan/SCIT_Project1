@@ -59,8 +59,6 @@ public class CustomerGUI extends JFrame {
 		contentPane.add(button_1);
 		
 		JButton button = new JButton("결제");
-		button.addActionListener((ActionListener) this);
-		button.setActionCommand("");
 		button.setBounds(290, 383, 90, 30);
 		contentPane.add(button);
 		
