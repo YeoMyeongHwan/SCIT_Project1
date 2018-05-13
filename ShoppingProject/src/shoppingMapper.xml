@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shopping.dao.ShoppingMapper">
+	<select id="loginCustomer" parameterType="Customer" resultType="Integer">
+		SELECT COUNT(ID) FROM CUSTOMERS WHERE ID=#{id} and PW=#{password}
+	</select>
+	<select id="checkCustomerID" parameterType="String" resultType="Integer">
+		SELECT COUNT(ID) FROM CUSTOMERS WHERE ID=#{id}
+	</select>
+	<insert id="insertCustomer" parameterType="Customer">
+		INSERT INTO Customers VALUES (#{id}, #{password}, #{name}, #{birth}, #{address}, #{phone}, #{email})
+	</insert>
+</mapper>
