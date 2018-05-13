@@ -32,6 +32,9 @@ public class ManagerGUI extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public ManagerGUI() {
+		init();
+	}
+	public void init() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 316, 440);
 		contentPane = new JPanel();
@@ -68,11 +71,9 @@ public class ManagerGUI extends JFrame implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		setEnabled(false);
-		if (e.getSource() == btn_customerlist) { // 객체변수명으로 비교
-			//DB에서 id와 pw를 비교하여 true면 접속 or 실패
+		if (e.getSource() == btn_customerlist) {
+			JOptionPane.showMessageDialog(this, btn_customerlist.getText() + " 페이지로 이동하겠습니다");
 			CustomerInfoGUI cig = new CustomerInfoGUI();
-			cig.setVisible(true);
 		} else if (e.getSource() == btn_itemlist) {
 			
 		} else if (e.getSource() == btn_payment) {
@@ -80,5 +81,8 @@ public class ManagerGUI extends JFrame implements ActionListener{
 		} else if (e.getSource() == btn_sales) {
 			
 		}
+	}
+	public void setenable() {
+		setEnabled(true);
 	}
 }

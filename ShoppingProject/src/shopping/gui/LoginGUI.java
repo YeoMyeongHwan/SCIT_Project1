@@ -14,13 +14,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import shopping.dao.ShoppingDAO;
+import shopping.vo.Customer;
+
 public class LoginGUI extends JFrame implements ActionListener {
 	private JTextField tf_ID;
 	private JPasswordField tf_pw;
 	private JButton btn_login = new JButton("로그인");
 	private JButton btn_make = new JButton("회원가입");
 	private JComboBox comboBox = new JComboBox();
+	private ShoppingDAO dao = new ShoppingDAO();
 	static LoginGUI frame;
+
 	/**
 	 * Launch the application.
 	 */
@@ -28,7 +33,6 @@ public class LoginGUI extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
 					frame = new LoginGUI();
 					frame.setBounds(100, 100, 300, 300);
 					frame.setVisible(true);
@@ -57,7 +61,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 		JLabel Label_pw = new JLabel("\uBE44\uBC00\uBC88\uD638:");
 		Label_pw.setBounds(25, 140, 75, 15);
 		getContentPane().add(Label_pw);
-		
+
 		comboBox.setBackground(Color.WHITE);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uAD00\uB9AC\uC790", "\uD68C\uC6D0" }));
 		comboBox.setBounds(130, 57, 120, 21);
@@ -74,7 +78,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
 		btn_login.setBounds(25, 210, 97, 23);
 		getContentPane().add(btn_login);
-		
+
 		btn_make.setBounds(153, 210, 97, 23);
 		getContentPane().add(btn_make);
 
@@ -89,19 +93,35 @@ public class LoginGUI extends JFrame implements ActionListener {
 			String id = tf_ID.getText();
 			String pw = tf_pw.getText();
 
-			//DB에서 id와 pw를 비교하여 true면 접속 or 실패
-			JOptionPane.showMessageDialog(this, catalog+" 페이지로 이동하겠습니다");
-			if(catalog.equals("관리자")) {
-				ManagerGUI mg = new ManagerGUI();
-				mg.setVisible(true);
-			}else {
-				CustomerGUI ci = new CustomerGUI();
-				ci.setVisible(true);
+			Customer cus = new Customer();
+			cus.setId(id);
+			cus.setPw(pw);
+			
+			boolean res = dao.loginCustomer(cus);	// DB에서 id와 pw를 비교하여 true면 접속 or 실패
+			if (res) {
+
+				if (catalog.equals("관리자")) {
+					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
+					ManagerGUI mg = new ManagerGUI();
+					mg.setVisible(true);
+					frame.dispose();
+				} else {
+					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
+					CustomerGUI ci = new CustomerGUI();
+					ci.setVisible(true);
+					frame.dispose();
+				}
 			}
-			frame.dispose();
+			else {
+				JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호를 다시 확인하세요.");
+			}
 		} else if (e.getSource() == btn_make) {
+			frame.setEnabled(false);
 			NewCustomerGUI ng = new NewCustomerGUI();
 			ng.setVisible(true);
 		}
+	}
+	public void setenable() {
+		frame.setEnabled(true);
 	}
 }
