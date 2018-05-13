@@ -13,4 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertCustomer" parameterType="Customer">
 		INSERT INTO Customers VALUES (#{id}, #{password}, #{name}, #{birth}, #{address}, #{phone}, #{email})
 	</insert>
+	<select id="selectAllCustomer" resultType="Customer">
+		SELECT * FROM CUSTOMERS
+	</select>
 </mapper>

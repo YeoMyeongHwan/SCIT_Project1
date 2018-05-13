@@ -1,5 +1,7 @@
 package shopping.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -69,5 +71,22 @@ public class ShoppingDAO {
 			return true;
 		else
 			return false;
-	}		
+	}
+	public ArrayList<Customer> selectAllCustomer() {
+		ArrayList<Customer> customers = new ArrayList<>();
+		Customer cus = new Customer();
+		try {
+			session = factory.openSession();
+			ShoppingMapper mapper = session.getMapper(ShoppingMapper.class);
+			
+			customers = (mapper.selectAllCustomer());
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return customers;
+	}
 }

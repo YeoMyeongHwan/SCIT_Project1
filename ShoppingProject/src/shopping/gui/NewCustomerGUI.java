@@ -197,6 +197,8 @@ public class NewCustomerGUI extends JFrame implements ActionListener {
 						Customer cus = new Customer(id, pw, name, birth, address, phone, email);
 						if (dao.insertCustomer(cus)) {
 							JOptionPane.showMessageDialog(this, "회원가입이 완료되었습니다.");
+							LoginGUI lg = new LoginGUI();
+							lg.setenable();
 							dispose();
 						}
 					}else {

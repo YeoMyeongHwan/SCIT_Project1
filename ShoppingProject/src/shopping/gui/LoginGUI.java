@@ -101,14 +101,14 @@ public class LoginGUI extends JFrame implements ActionListener {
 			if (res) {
 
 				if (catalog.equals("관리자")) {
+					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
 					ManagerGUI mg = new ManagerGUI();
 					mg.setVisible(true);
-					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
 					frame.dispose();
 				} else {
+					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
 					CustomerGUI ci = new CustomerGUI();
 					ci.setVisible(true);
-					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
 					frame.dispose();
 				}
 			}
