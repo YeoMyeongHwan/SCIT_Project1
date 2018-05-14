@@ -16,4 +16,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAllCustomer" resultType="Customer">
 		SELECT * FROM CUSTOMERS
 	</select>
+	<select id="selectAllItem" resultType="Item">
+		select * from items ORDER BY itemNo ASC
+	</select>
+	<insert id="insertItem" parameterType="Item">
+		INSERT INTO ITEMS VALUES (itemsid.nextval, #{itemName}, #{price})
+	</insert>
+	<update id="updateItem" parameterType="Item">
+		UPDATE ITEMS SET ITEMNAME = #{itemName}, PRICE = #{price} WHERE ITEMNO = #{itemNo}
+	</update>
+	<delete id="deleteItem" parameterType="String">
+		DELETE FROM ITEMS WHERE ITEMNO = #{itemNo}; 
+	</delete>
 </mapper>

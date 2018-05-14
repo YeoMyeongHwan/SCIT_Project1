@@ -17,14 +17,14 @@ import javax.swing.JTextField;
 import shopping.dao.ShoppingDAO;
 import shopping.vo.Customer;
 
-public class LoginGUI extends JFrame implements ActionListener {
+public class Login extends JFrame implements ActionListener {
 	private JTextField tf_ID;
 	private JPasswordField tf_pw;
 	private JButton btn_login = new JButton("로그인");
 	private JButton btn_make = new JButton("회원가입");
 	private JComboBox comboBox = new JComboBox();
 	private ShoppingDAO dao = new ShoppingDAO();
-	static LoginGUI frame;
+	static Login frame;
 
 	/**
 	 * Launch the application.
@@ -33,7 +33,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new LoginGUI();
+					frame = new Login();
 					frame.setBounds(100, 100, 300, 300);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -43,7 +43,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 		});
 	}
 
-	public LoginGUI() {
+	public Login() {
 		init();
 	}
 
@@ -102,7 +102,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
 				if (catalog.equals("관리자")) {
 					JOptionPane.showMessageDialog(this, catalog + " 페이지로 이동하겠습니다");
-					ManagerGUI mg = new ManagerGUI();
+					Manager mg = new Manager();
 					mg.setVisible(true);
 					frame.dispose();
 				} else {
@@ -117,7 +117,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 			}
 		} else if (e.getSource() == btn_make) {
 			frame.setEnabled(false);
-			NewCustomerGUI ng = new NewCustomerGUI();
+			NewCustomer ng = new NewCustomer();
 			ng.setVisible(true);
 		}
 	}

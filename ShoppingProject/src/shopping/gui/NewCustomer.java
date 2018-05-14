@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import shopping.dao.ShoppingDAO;
 import shopping.vo.Customer;
 
-public class NewCustomerGUI extends JFrame implements ActionListener {
+public class NewCustomer extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JLabel labed_title;
@@ -50,7 +50,7 @@ public class NewCustomerGUI extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public NewCustomerGUI() {
+	public NewCustomer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 660);
 		setTitle("회원가입");
@@ -197,7 +197,7 @@ public class NewCustomerGUI extends JFrame implements ActionListener {
 						Customer cus = new Customer(id, pw, name, birth, address, phone, email);
 						if (dao.insertCustomer(cus)) {
 							JOptionPane.showMessageDialog(this, "회원가입이 완료되었습니다.");
-							LoginGUI lg = new LoginGUI();
+							Login lg = new Login();
 							lg.setenable();
 							dispose();
 						}
@@ -211,7 +211,7 @@ public class NewCustomerGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(this, "ID 중복검사를 해주세요.");
 			}
 		} else if (e.getSource() == btn_cancel) {
-			LoginGUI lg = new LoginGUI();
+			Login lg = new Login();
 			lg.setenable();
 			dispose();
 		}

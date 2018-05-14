@@ -7,7 +7,15 @@ public class Item {
 	
 	public Item() {
 	}
-
+	public Item(String itemName, String price) {
+		this.itemName = itemName;
+		this.price = price;
+	}
+	public Item(String itemNo, String itemName, String price) {
+		this.itemNo = itemNo;
+		this.itemName = itemName;
+		this.price = price;
+	}
 	public String getItemNo() {
 		return itemNo;
 	}

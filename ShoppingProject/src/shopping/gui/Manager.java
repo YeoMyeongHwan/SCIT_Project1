@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import java.awt.Dimension;
 
-public class ManagerGUI extends JFrame implements ActionListener{
+public class Manager extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton btn_itemlist;
@@ -31,7 +31,7 @@ public class ManagerGUI extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public ManagerGUI() {
+	public Manager() {
 		init();
 	}
 	public void init() {
@@ -73,9 +73,10 @@ public class ManagerGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btn_customerlist) {
 			JOptionPane.showMessageDialog(this, btn_customerlist.getText() + " 페이지로 이동하겠습니다");
-			CustomerInfoGUI cig = new CustomerInfoGUI();
+			CustomerManager cig = new CustomerManager();
 		} else if (e.getSource() == btn_itemlist) {
-			
+			JOptionPane.showMessageDialog(this, btn_itemlist.getText() + " 페이지로 이동하겠습니다");
+			ItemManager im = new ItemManager();
 		} else if (e.getSource() == btn_payment) {
 			
 		} else if (e.getSource() == btn_sales) {

@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class MyInfoGUI extends JFrame {
+public class MyInfo extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel labed_title;
@@ -43,7 +43,7 @@ public class MyInfoGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MyInfoGUI() {
+	public MyInfo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 592);
 		setTitle("내 정보");

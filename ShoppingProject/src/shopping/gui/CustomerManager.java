@@ -19,7 +19,7 @@ import javax.swing.table.TableColumn;
 import shopping.dao.ShoppingDAO;
 import shopping.vo.Customer;
 
-public class CustomerInfoGUI extends JFrame implements ActionListener{
+public class CustomerManager extends JFrame implements ActionListener{
 	private JButton btn_check;
 	private JButton btn_close;
 	private ShoppingDAO dao = new ShoppingDAO();
@@ -28,7 +28,7 @@ public class CustomerInfoGUI extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public CustomerInfoGUI() {
+	public CustomerManager() {
 		init();
 	}
 	public void init() {
