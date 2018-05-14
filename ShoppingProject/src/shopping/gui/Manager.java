@@ -53,7 +53,7 @@ public class Manager extends JFrame implements ActionListener{
 		btn_itemlist.setBounds(0, 100, 311, 105);
 		contentPane.add(btn_itemlist);
 		
-		btn_payment = new JButton("결 제 현 황");
+		btn_payment = new JButton("배 송 현 황");
 		btn_payment.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 		btn_payment.setBounds(0, 200, 311, 105);
 		contentPane.add(btn_payment);
